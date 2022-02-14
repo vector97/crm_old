@@ -52,7 +52,7 @@
     align-items: center;
     gap: 10px;
     padding-bottom: 21px;
-    border-bottom: 1px solid #C6C2DE;
+    border-bottom: 1px solid $separator-color;
     margin-bottom: 21px;
   }
 
@@ -119,6 +119,11 @@
     padding: 10px 25px;
     border: none;
     border-radius: 6px;
+    transition: all .2s ease;
+
+    &:hover {
+      background-color: $default-color;
+    }
   }
 
   &_open {
@@ -163,6 +168,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: all .2s ease;
+
+      &:hover {
+        background-color: $default-color;
+      }
     }
 
     &__data_textarea {
@@ -182,7 +192,7 @@
     &__input,
     &__textarea {
       width: 100%;
-      background-color: #f4f2ff;
+      background-color: $field-color;
       border: none;
       outline: none;
       border-radius: 6px;
@@ -224,7 +234,7 @@
       height: 40px;
       border: none;
       border-radius: 6px;
-      background-color: #f4f2ff;
+      background-color: $field-color;
       background-repeat: no-repeat;
       background-position: center center;
       background-size: 50% 50%;
