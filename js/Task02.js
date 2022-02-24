@@ -1,34 +1,18 @@
 'use strict';
 
-console.log('%cЗадача №2', background)
+console.log('%cЗадача №2', background);
 
-const isPrime = (x = Number(prompt('Введите целое положительное число для проверки его на простоту: '))) => {
-  let simple = true
+const allCashbox = [4500, 3210, 650, 1250, 7830, 990, 13900, 370];
 
-  if (x > 0 && Number.isInteger(x)) {
-    if (x === 1) {
-      simple = false
-    }
+const getAverageValue = (cashbox) => {
+  let sum = 0;
+  let mean;
 
-    for (let i = 2; i < x; i++) {
-      if (Number.isInteger(x / i)) {
-        simple = false
-        break
-      }
-    }
-
-    console.log(simple)
-
-    if (simple === true) {
-      alert(`Число ${x} - простое.`)
-    } else {
-      alert(`Введённое вами число ${x} не является простым.`)
-    }
-
-  } else {
-    alert('Вы ввели неверное число!')
-    isPrime()
+  for (let i = 0; i < cashbox.length; i++) {
+    sum += cashbox[i];
   }
-}
 
-isPrime()
+  return mean = Math.floor(sum / cashbox.length);
+};
+
+console.log(getAverageValue(allCashbox));
