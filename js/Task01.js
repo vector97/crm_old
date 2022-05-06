@@ -1,22 +1,17 @@
-'use strict';
+"use strict";
 
-const background = 'padding: 0 20px; text-shadow: 0 0 10px red; color: green';
-console.log('%cЗадача №1', background);
+const background = "padding: 0 20px; text-shadow: 0 0 10px red; color: green";
+console.log("%cЗадача №1", background);
 
+const generator01 = (items) => {
+  const numbers = [];
+  numbers.length = items;
 
-const allStudents = ['Иванов', 'Петров', 'Сидоров', 'Кузнецов', 'Смирнов', 'Попов', 'Соколов'];
-const failedStudents = ['Сидоров', 'Смирнов', 'Попов'];
-
-const filter = (allStudents, failedStudents) => {
-  const successStudents = [];
-
-  for (let i = 0; i < allStudents.length; i++) {
-    if (!(failedStudents.includes(allStudents[i]))) {
-      successStudents.push(allStudents[i])
-    }
+  for (let i = 0; i < items; i++) {
+    numbers[i] = Math.ceil(Math.random() * 100);
   }
 
-  return successStudents;
+  return numbers;
 };
 
-console.log(filter(allStudents, failedStudents));
+console.log(generator01(10));

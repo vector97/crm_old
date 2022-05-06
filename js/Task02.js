@@ -1,18 +1,16 @@
-'use strict';
+"use strict";
 
-console.log('%cЗадача №2', background);
+console.log("%cЗадача №2", background);
 
-const allCashbox = [4500, 3210, 650, 1250, 7830, 990, 13900, 370];
+const generator02 = (items, m, n) => {
+  const numbers = [];
+  numbers.length = items;
 
-const getAverageValue = (cashbox) => {
-  let sum = 0;
-  let mean;
-
-  for (let i = 0; i < cashbox.length; i++) {
-    sum += cashbox[i];
+  for (let i = 0; i < items; i++) {
+    numbers[i] = Math.ceil(Math.random() * (m - n) + n);
   }
 
-  return mean = Math.floor(sum / cashbox.length);
+  return numbers;
 };
 
-console.log(getAverageValue(allCashbox));
+console.log(generator02(10, 60, 40));

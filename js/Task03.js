@@ -1,15 +1,31 @@
-'use strict';
+"use strict";
 
-console.log('%cЗадача №3', background);
+console.log("%cЗадача №3", background);
 
-const names = ['Noah', 'Liam', 'Mason', 'Jacob', 'Robot', 'William', 'Ethan', 'Michael', 'Alexander'];
+const generator03 = (items, m, n, str) => {
+  const numbers = [];
+  numbers.length = items;
 
-const addPrefix = ([...arr], prefix) => {
-  for (let i = 0; i < arr.length; i++) {
-    arr[i] = `${prefix} ${arr[i]}`
+  for (let i = 0; i < items; i++) {
+    numbers[i] = Math.ceil(Math.random() * (m - n) + n);
   }
 
-  return arr;
+  const filterNumbers = (arr) => {
+    switch (str) {
+      case "even":
+        return arr.filter((item) => {
+          return !(item % 2);
+        });
+      case "odd":
+        return arr.filter((item) => {
+          return item % 2;
+        });
+      default:
+        return arr;
+    }
+  };
+
+  return filterNumbers(numbers);
 };
 
-console.log(addPrefix(names, 'Mr'));
+console.log(generator03(10, 60, 40, "even"));
