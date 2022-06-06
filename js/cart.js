@@ -1,7 +1,7 @@
-"use strict";
+'use strict';
 
-const background = "padding: 0 20px; text-shadow: 0 0 10px red; color: green";
-console.log("%cЗадача №1", background);
+const background = 'padding: 0 20px; text-shadow: 0 0 10px red; color: green';
+console.log('%cЗадача №1', background);
 
 const cart = {
   items: [],
@@ -43,9 +43,9 @@ const cart = {
   },
 };
 
-cart.add("Шапка", 900, 2);
-cart.add("Шарф", 300, 2);
-cart.add("Варежки", 500, 4);
-cart.add("Куртка", 2000, 2);
+cart.add('Шапка', 900, 2);
+cart.add('Шарф', 300, 2);
+cart.add('Варежки', 500, 4);
+cart.add('Куртка', 2000, 2);
 
 cart.print();
