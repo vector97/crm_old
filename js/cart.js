@@ -5,10 +5,19 @@ console.log("%cЗадача №1", background);
 
 const cart = {
   items: [],
-  totalPrice: 0,
   count: 0,
-  getTotalPrice() {
-    return this.totalPrice;
+  get totalPrice() {
+    let itemPrice = 0;
+    let itemCount = 0;
+    let totalPrice = 0;
+
+    this.items.forEach((item) => {
+      itemPrice = item.itemPrice;
+      itemCount = item.itemCount;
+      totalPrice += this.calculateItemPrice(itemPrice, itemCount);
+    });
+
+    return totalPrice;
   },
   add(itemName, itemPrice, itemCount = 1) {
     this.items.push({
@@ -17,18 +26,16 @@ const cart = {
       itemCount,
     });
     this.increaseCount(itemCount);
-    this.calculateItemPrice(itemPrice, itemCount);
   },
   increaseCount(itemCount) {
     this.count += itemCount;
   },
   calculateItemPrice(itemPrice, itemCount) {
-    this.totalPrice += itemPrice * itemCount;
+    return itemPrice * itemCount;
   },
   clear() {
     this.items = [];
     this.count = 0;
-    this.totalPrice = 0;
   },
   print() {
     console.log(JSON.stringify(this.items));
