@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-  <title>Модуль 04 Урок 10 - Отладка кода + ESLint</title>
+  <title>Модуль 04 Урок 11 - Функции lvl 2 - стек вызовов, рекурсия, this</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,13 +11,15 @@
 
   <!-- Подключение главного файла со скриптами -->
 
+  <script defer src="js/game.js"></script>
+  <script defer src="js/acc.js"></script>
+  <script defer src="js/rectangle.js"></script>
   <script defer src="js/cart.js"></script>
-  <script defer src="js/ipv4.js"></script>
-  <script defer src="js/ip.js"></script>
 
   <link rel="icon" href="favicon.svg">
 
 </head>
+
 <body class="page">
   <h1 class="visually-hidden">CRM</h1>
 
@@ -32,10 +35,12 @@
 
         <div class="catalog__body">
           <div class="catalog__control">
-            <button class="catalog__filter-btn"><img src="./img/catalog/filter.svg" alt="Фильтр каталога">Фильтр</button>
+            <button class="catalog__filter-btn"><img src="./img/catalog/filter.svg"
+                alt="Фильтр каталога">Фильтр</button>
 
             <form class="catalog__search search" action="#">
-              <button class="search__btn" type="button"><img src="./img/catalog/search.svg" alt="Поиск по наименованию и категории"></button>
+              <button class="search__btn" type="button"><img src="./img/catalog/search.svg"
+                  alt="Поиск по наименованию и категории"></button>
               <input class="search__input" type="search" placeholder="Поиск по наименованию и категории">
             </form>
             <!-- /.catalog__search -->
@@ -70,9 +75,12 @@
                   <td class="table__data table__data_cost">$100</td>
                   <td class="table__data table__data_sum">$500</td>
                   <td class="table__data table__data_buttons">
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__no-image.svg" alt="Без изображения"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg" alt="Редактировать запись"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg" alt="Удалить запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__no-image.svg"
+                        alt="Без изображения"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg"
+                        alt="Редактировать запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg"
+                        alt="Удалить запись"></button>
                   </td>
                 </tr>
 
@@ -85,9 +93,12 @@
                   <td class="table__data table__data_cost">$14</td>
                   <td class="table__data table__data_sum">$168</td>
                   <td class="table__data table__data_buttons">
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg" alt="Посмотреть изображение"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg" alt="Редактировать запись"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg" alt="Удалить запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg"
+                        alt="Посмотреть изображение"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg"
+                        alt="Редактировать запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg"
+                        alt="Удалить запись"></button>
                   </td>
                 </tr>
 
@@ -100,9 +111,12 @@
                   <td class="table__data table__data_cost">$100</td>
                   <td class="table__data table__data_sum">$500</td>
                   <td class="table__data table__data_buttons">
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg" alt="Посмотреть изображение"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg" alt="Редактировать запись"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg" alt="Удалить запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg"
+                        alt="Посмотреть изображение"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg"
+                        alt="Редактировать запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg"
+                        alt="Удалить запись"></button>
                   </td>
                 </tr>
 
@@ -115,9 +129,12 @@
                   <td class="table__data table__data_cost">$100</td>
                   <td class="table__data table__data_sum">$500</td>
                   <td class="table__data table__data_buttons">
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg" alt="Посмотреть изображение"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg" alt="Редактировать запись"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg" alt="Удалить запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg"
+                        alt="Посмотреть изображение"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg"
+                        alt="Редактировать запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg"
+                        alt="Удалить запись"></button>
                   </td>
                 </tr>
 
@@ -130,9 +147,12 @@
                   <td class="table__data table__data_cost">$100</td>
                   <td class="table__data table__data_sum">$500</td>
                   <td class="table__data table__data_buttons">
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg" alt="Посмотреть изображение"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg" alt="Редактировать запись"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg" alt="Удалить запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg"
+                        alt="Посмотреть изображение"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg"
+                        alt="Редактировать запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg"
+                        alt="Удалить запись"></button>
                   </td>
                 </tr>
 
@@ -145,9 +165,12 @@
                   <td class="table__data table__data_cost">$100</td>
                   <td class="table__data table__data_sum">$500</td>
                   <td class="table__data table__data_buttons">
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg" alt="Посмотреть изображение"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg" alt="Редактировать запись"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg" alt="Удалить запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg"
+                        alt="Посмотреть изображение"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg"
+                        alt="Редактировать запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg"
+                        alt="Удалить запись"></button>
                   </td>
                 </tr>
 
@@ -160,9 +183,12 @@
                   <td class="table__data table__data_cost">$100</td>
                   <td class="table__data table__data_sum">$500</td>
                   <td class="table__data table__data_buttons">
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg" alt="Посмотреть изображение"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg" alt="Редактировать запись"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg" alt="Удалить запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg"
+                        alt="Посмотреть изображение"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg"
+                        alt="Редактировать запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg"
+                        alt="Удалить запись"></button>
                   </td>
                 </tr>
 
@@ -175,9 +201,12 @@
                   <td class="table__data table__data_cost">$100</td>
                   <td class="table__data table__data_sum">$500</td>
                   <td class="table__data table__data_buttons">
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg" alt="Посмотреть изображение"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg" alt="Редактировать запись"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg" alt="Удалить запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg"
+                        alt="Посмотреть изображение"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg"
+                        alt="Редактировать запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg"
+                        alt="Удалить запись"></button>
                   </td>
                 </tr>
 
@@ -190,9 +219,12 @@
                   <td class="table__data table__data_cost">$100</td>
                   <td class="table__data table__data_sum">$500</td>
                   <td class="table__data table__data_buttons">
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg" alt="Посмотреть изображение"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg" alt="Редактировать запись"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg" alt="Удалить запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg"
+                        alt="Посмотреть изображение"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg"
+                        alt="Редактировать запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg"
+                        alt="Удалить запись"></button>
                   </td>
                 </tr>
 
@@ -205,9 +237,12 @@
                   <td class="table__data table__data_cost">$100</td>
                   <td class="table__data table__data_sum">$500</td>
                   <td class="table__data table__data_buttons">
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg" alt="Посмотреть изображение"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg" alt="Редактировать запись"></button>
-                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg" alt="Удалить запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__image.svg"
+                        alt="Посмотреть изображение"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__edit.svg"
+                        alt="Редактировать запись"></button>
+                    <button class="table__data-btn" type="button"><img src="./img/catalog/table__delete.svg"
+                        alt="Удалить запись"></button>
                   </td>
                 </tr>
               </tbody>
@@ -254,7 +289,8 @@
   <div class="modal">
     <div class="modal__wrapper">
       <section class="modal__window">
-        <button class="modal__close" type="button"><img src="./img/modal-form/close.svg" alt="Закрыть модальное окно"></button>
+        <button class="modal__close" type="button"><img src="./img/modal-form/close.svg"
+            alt="Закрыть модальное окно"></button>
         <div class="modal__header">
           <h2 class="modal__title">Добавить товар</h2>
 
@@ -339,4 +375,5 @@
   <!-- /.modal -->
 
 </body>
+
 </html>
