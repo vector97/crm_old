@@ -23,7 +23,6 @@ const askNumber = () => {
     alert('Введите число!');
     askNumber();
   }
-  console.log(userNumber);
 };
 
 askNumber();
