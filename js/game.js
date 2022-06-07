@@ -11,7 +11,7 @@ const askNumber = () => {
 
   if (userNumber === null) {
     alert('Конец игры!');
-  } else if (userNumber === randomNumber) {
+  } else if (+userNumber === randomNumber) {
     alert('Правильно!');
   } else if (userNumber > randomNumber) {
     alert('Меньше!');
@@ -23,6 +23,7 @@ const askNumber = () => {
     alert('Введите число!');
     askNumber();
   }
+  console.log(userNumber);
 };
 
 askNumber();
