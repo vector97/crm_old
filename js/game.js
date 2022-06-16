@@ -1,63 +1,194 @@
 'use strict';
 
 const background = 'padding: 0 20px; text-shadow: 0 0 10px red; color: green';
-console.log('%c Задача №1 на рекурсию Угадай число', background);
+console.log('%c Игра Камень, ножницы, бумага', background);
 
-const min = prompt('Введите минимальное целое число', '');
-const max = prompt('Введите максимальное целое число', '');
-let attempt = Math.ceil((max - min) * 0.3);
-const randomNumber = Math.ceil(Math.random() * (+max - +min + 1)) + +min;
-console.log('randomNumber: ', randomNumber);
-const userNums = [];
+(() => {
+  const FIGURES_RUS = ['камень', 'ножницы', 'бумага'];
+  const FIGURES_ENG = ['rock', 'scissors', 'paper'];
 
-const askNumber = () => {
-  while (attempt > 0) {
-    const userNumber =
-      prompt(`Отгадайте число в диапазоне от ${min} до ${max}
-      за ${attempt} попыток`, '');
-
-    if (!userNums.includes(userNumber) && isFinite(userNumber)) {
-      userNums.push(userNumber);
-      attempt--;
-    } else {
-      alert('Это число вы уже вводили!');
-      return askNumber();
-    }
-
-    console.log('userNums: ', userNums);
-
-    if (userNumber === null) {
-      alert('Конец игры!');
-      return;
-    }
-
-    if (+userNumber === randomNumber) {
-      alert('Правильно!');
-      return;
-    }
-
-    if (userNumber > randomNumber) {
-      alert('Меньше!');
-      return askNumber();
-    }
-
-    if (userNumber < randomNumber) {
-      alert('Больше!');
-      return askNumber();
-    }
-
-    if (!isFinite(userNumber) || userNumber === '') {
-      alert('Введите число!');
-      return askNumber();
-    }
+  const getRandomIntInclusive = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  alert(`У вас закончились попытки! К сожалению, вы проиграли.
-    Правильное число ${randomNumber}`);
-};
+  const getFigure = (lang) => {
+    const FIGURES = lang;
 
-if (min === null || max === null) {
-  alert('Конец игры!');
-} else {
-  askNumber();
-}
+    return FIGURES;
+  }
+
+  const game = (language) => {
+    const result = {
+      player: 0,
+      computer: 0,
+    };
+    const lang = language === 'EN' || language === 'ENG' ? FIGURES_ENG : FIGURES_RUS;
+
+    return function start() {
+      const computerMove = getFigure(lang)[getRandomIntInclusive(0, lang.length - 1)];
+
+      let playerMove;
+      if (lang === FIGURES_ENG) {
+        playerMove = prompt('Rock, scissors or paper?');
+      } else {
+        playerMove = prompt('Камень, ножницы или бумага?');
+      }
+
+      if (playerMove === null) {
+        let exitGame;
+        language === 'EN' || language === 'ENG' ?
+          exitGame = confirm('Do you really want to leave the game?') :
+          exitGame = confirm('Вы действительно хотите покинуть игру?');
+
+        if (exitGame) {
+          language === 'EN' || language === 'ENG' ?
+            alert(`
+              End of the game!
+              PC: ${result.computer}
+              Player: ${result.player}
+            `) :
+            alert(`
+              Конец игры!
+              Компьютер: ${result.computer}
+              Игрок: ${result.player}
+            `);
+        } else {
+          language === 'EN' || language === 'ENG' ?
+            alert(`
+              We continue the game!
+              PC: ${result.computer}
+              Player: ${result.player}
+            `) :
+            alert(`
+              Продолжаем игру!
+              Компьютер: ${result.computer}
+              Игрок: ${result.player}
+            `);
+          start();
+        }
+      } else if (playerMove[0] === computerMove[0]) {
+        language === 'EN' || language === 'ENG' ?
+          alert(
+            `Draw!
+            PC: ${result.computer}
+            Player: ${result.player}`
+          ) :
+          alert(
+            `Ничья!
+            Компьютер: ${result.computer}
+            Игрок: ${result.player}`
+          );
+
+        start();
+      } else if (playerMove[0] === getFigure(lang)[0][0]) {
+        if (computerMove === getFigure(lang)[1]) {
+          result.player += 1;
+
+          language === 'EN' || language === 'ENG' ?
+            alert(
+              `WIN!
+              PC: ${result.computer}
+              Player: ${result.player}`
+            ) :
+            alert(
+              `Вы выиграли!
+              Компьютер: ${result.computer}
+              Игрок: ${result.player}`
+            );
+
+          start();
+        } else {
+          result.computer += 1;
+
+          language === 'EN' || language === 'ENG' ?
+            alert(
+              `LOSS!
+              PC: ${result.computer}
+              Player: ${result.player}`
+            ) :
+            alert(
+              `Вы проиграли!
+              Компьютер: ${result.computer}
+              Игрок: ${result.player}`
+            );
+
+          start();
+        }
+      } else if (playerMove[0] === getFigure(lang)[1][0]) {
+        if (computerMove === getFigure(lang)[0]) {
+          result.computer += 1;
+
+          language === 'EN' || language === 'ENG' ?
+            alert(
+              `LOSS!
+              PC: ${result.computer}
+              Player: ${result.player}`
+            ) :
+            alert(
+              `Вы проиграли!
+              Компьютер: ${result.computer}
+              Игрок: ${result.player}`
+            );
+
+          start();
+        } else {
+          result.player += 1;
+
+          language === 'EN' || language === 'ENG' ?
+            alert(
+              `WIN!
+              PC: ${result.computer}
+              Player: ${result.player}`
+            ) :
+            alert(
+              `Вы победили!
+              Компьютер: ${result.computer}
+              Игрок: ${result.player}`
+            );
+
+          start();
+        }
+      } else if (playerMove[0] === getFigure(lang)[2][0]) {
+        if (computerMove === getFigure(lang)[1]) {
+          result.computer += 1;
+
+          language === 'EN' || language === 'ENG' ?
+            alert(
+              `LOSS!
+              PC: ${result.computer}
+              Player: ${result.player}`
+            ) :
+            alert(
+              `Вы проиграли!
+              Компьютер: ${result.computer}
+              Игрок: ${result.player}`
+            );
+
+          start();
+        } else {
+          result.player += 1;
+
+          language === 'EN' || language === 'ENG' ?
+            alert(
+              `WIN!
+              PC: ${result.computer}
+              Player: ${result.player}`
+            ) :
+            alert(
+              `Вы победили!
+              Компьютер: ${result.computer}
+              Игрок: ${result.player}`
+            );
+
+          start();
+        }
+      } else {
+        start();
+      }
+    };
+  };
+
+  window.RPS = game;
+})();
