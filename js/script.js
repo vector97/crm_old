@@ -1,4 +1,4 @@
 'use script';
 
-const startGame = window.RPS('EN');
+const startGame = window.RPS();
 startGame();

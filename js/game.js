@@ -27,163 +27,71 @@ console.log('%c Игра Камень, ножницы, бумага', background
     const lang = language === 'EN' || language === 'ENG' ? FIGURES_ENG : FIGURES_RUS;
 
     return function start() {
-      const computerMove = getFigure(lang)[getRandomIntInclusive(0, lang.length - 1)];
+      const localization = language === 'EN' || language === 'ENG' ? {
+          startGame: 'Rock, scissors or paper?',
+          exitGame: 'Do you really want to leave the game?',
+          gameOver: 'End of the game!',
+          continueGame: 'We continue the game!',
+          draw: 'Draw!',
+          win: 'WIN!',
+          loss: 'LOSS!',
+          resultGame: `Player : PC`,
+        } :
+        {
+          startGame: 'Камень, ножницы или бумага?',
+          exitGame: 'Вы действительно хотите покинуть игру?',
+          gameOver: 'Конец игры!',
+          continueGame: 'Продолжаем игру!',
+          draw: 'Ничья!',
+          win: 'Вы выиграли!',
+          loss: 'Вы проиграли!',
+          resultGame: `Игрок : Компьютер`,
+        };
 
-      let playerMove;
-      if (lang === FIGURES_ENG) {
-        playerMove = prompt('Rock, scissors or paper?');
-      } else {
-        playerMove = prompt('Камень, ножницы или бумага?');
-      }
+      const computerMove = getFigure(lang)[getRandomIntInclusive(0, lang.length - 1)];
+      const playerMove = prompt(localization.startGame);
+
+      const winGame = () => {
+        return ((playerMove[0] === getFigure(lang)[0][0]) && (computerMove === getFigure(lang)[1])) ||
+        ((playerMove[0] === getFigure(lang)[1][0]) && (computerMove === getFigure(lang)[2])) ||
+        ((playerMove[0] === getFigure(lang)[2][0]) && (computerMove === getFigure(lang)[0]));
+      };
+      const lossGame = () => {
+        return ((computerMove === getFigure(lang)[0]) && (playerMove[0] === getFigure(lang)[1][0])) ||
+          ((computerMove === getFigure(lang)[1]) && (playerMove[0] === getFigure(lang)[2][0])) ||
+          ((computerMove === getFigure(lang)[2]) && (playerMove[0] === getFigure(lang)[0][0]));
+      };
 
       if (playerMove === null) {
-        let exitGame;
-        language === 'EN' || language === 'ENG' ?
-          exitGame = confirm('Do you really want to leave the game?') :
-          exitGame = confirm('Вы действительно хотите покинуть игру?');
+        let exitGame = confirm(localization.exitGame);
 
         if (exitGame) {
-          language === 'EN' || language === 'ENG' ?
-            alert(`
-              End of the game!
-              PC: ${result.computer}
-              Player: ${result.player}
-            `) :
-            alert(`
-              Конец игры!
-              Компьютер: ${result.computer}
-              Игрок: ${result.player}
-            `);
+          alert(`${localization.gameOver}
+              ${localization.resultGame}
+              ${result.player} : ${result.computer}`);
         } else {
-          language === 'EN' || language === 'ENG' ?
-            alert(`
-              We continue the game!
-              PC: ${result.computer}
-              Player: ${result.player}
-            `) :
-            alert(`
-              Продолжаем игру!
-              Компьютер: ${result.computer}
-              Игрок: ${result.player}
-            `);
+          alert(`${localization.continueGame}
+                ${localization.resultGame}
+                ${result.player} : ${result.computer}`);
           start();
         }
       } else if (playerMove[0] === computerMove[0]) {
-        language === 'EN' || language === 'ENG' ?
-          alert(
-            `Draw!
-            PC: ${result.computer}
-            Player: ${result.player}`
-          ) :
-          alert(
-            `Ничья!
-            Компьютер: ${result.computer}
-            Игрок: ${result.player}`
-          );
-
+          alert(`${localization.draw}
+                ${localization.resultGame}
+                ${result.player} : ${result.computer}`);
         start();
-      } else if (playerMove[0] === getFigure(lang)[0][0]) {
-        if (computerMove === getFigure(lang)[1]) {
-          result.player += 1;
-
-          language === 'EN' || language === 'ENG' ?
-            alert(
-              `WIN!
-              PC: ${result.computer}
-              Player: ${result.player}`
-            ) :
-            alert(
-              `Вы выиграли!
-              Компьютер: ${result.computer}
-              Игрок: ${result.player}`
-            );
-
-          start();
-        } else {
-          result.computer += 1;
-
-          language === 'EN' || language === 'ENG' ?
-            alert(
-              `LOSS!
-              PC: ${result.computer}
-              Player: ${result.player}`
-            ) :
-            alert(
-              `Вы проиграли!
-              Компьютер: ${result.computer}
-              Игрок: ${result.player}`
-            );
-
-          start();
-        }
-      } else if (playerMove[0] === getFigure(lang)[1][0]) {
-        if (computerMove === getFigure(lang)[0]) {
-          result.computer += 1;
-
-          language === 'EN' || language === 'ENG' ?
-            alert(
-              `LOSS!
-              PC: ${result.computer}
-              Player: ${result.player}`
-            ) :
-            alert(
-              `Вы проиграли!
-              Компьютер: ${result.computer}
-              Игрок: ${result.player}`
-            );
-
-          start();
-        } else {
-          result.player += 1;
-
-          language === 'EN' || language === 'ENG' ?
-            alert(
-              `WIN!
-              PC: ${result.computer}
-              Player: ${result.player}`
-            ) :
-            alert(
-              `Вы победили!
-              Компьютер: ${result.computer}
-              Игрок: ${result.player}`
-            );
-
-          start();
-        }
-      } else if (playerMove[0] === getFigure(lang)[2][0]) {
-        if (computerMove === getFigure(lang)[1]) {
-          result.computer += 1;
-
-          language === 'EN' || language === 'ENG' ?
-            alert(
-              `LOSS!
-              PC: ${result.computer}
-              Player: ${result.player}`
-            ) :
-            alert(
-              `Вы проиграли!
-              Компьютер: ${result.computer}
-              Игрок: ${result.player}`
-            );
-
-          start();
-        } else {
-          result.player += 1;
-
-          language === 'EN' || language === 'ENG' ?
-            alert(
-              `WIN!
-              PC: ${result.computer}
-              Player: ${result.player}`
-            ) :
-            alert(
-              `Вы победили!
-              Компьютер: ${result.computer}
-              Игрок: ${result.player}`
-            );
-
-          start();
-        }
+      } else if (winGame()) {
+        result.player++;
+        alert(`${localization.win}
+              ${localization.resultGame}
+              ${result.player} : ${result.computer}`);
+        start();
+      } else if (lossGame()) {
+        result.computer++;
+        alert(`${localization.loss}
+              ${localization.resultGame}
+              ${result.player} : ${result.computer}`);
+        start();
       } else {
         start();
       }
